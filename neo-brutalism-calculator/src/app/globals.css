@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #101010;
+  --foreground: #0b0b0b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  @apply font-sans antialiased;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -20;
+  background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -30;
+  background: linear-gradient(135deg, #0f0f0f 0%, #050505 100%);
+}
+
+@layer base {
+  ::selection {
+    @apply bg-[#ff4faf] text-black;
+  }
+
+  input[type="range"] {
+    accent-color: #0b0b0b;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    border: 4px solid #0b0b0b;
+    background: #faff00;
+    box-shadow: 4px 4px 0 #0b0b0b;
+    cursor: grab;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    border: 4px solid #0b0b0b;
+    background: #faff00;
+    box-shadow: 4px 4px 0 #0b0b0b;
+    cursor: grab;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:active,
+  input[type="range"]::-moz-range-thumb:active {
+    cursor: grabbing;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 #0b0b0b;
+  }
+}
